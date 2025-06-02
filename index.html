@@ -1,68 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link rel="icon" href="qaid.jpeg" type="image/png/jpeg">
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Welcome to Qaid.in</title>
+  <link rel="icon" href="qaid.jpeg" type="image/jpeg">
   <style>
+    :root {
+      --primary-color: #0077b5;
+      --secondary-color: #ffffff;
+      --text-dark: #333;
+      --text-light: #fff;
+      --background-light: #f0f0f0;
+      --background-dark: #121212;
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #2980b9, #6dd5fa);
-      color: white;
-      text-align: center;
       margin: 0;
+      padding: 0;
+      background: var(--background-light);
+      color: var(--text-dark);
+      transition: background 0.3s, color 0.3s;
     }
 
     header {
-      padding: 100px 20px 50px;
+      background: linear-gradient(to right, #2980b9, #6dd5fa);
+      padding: 80px 20px 40px;
+      text-align: center;
+      color: white;
+    }
+
+    header img {
+      width: 100px;
+      border-radius: 50%;
+      margin-bottom: 20px;
     }
 
     h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
+      font-size: 2.8em;
+      margin: 0;
     }
 
-    p {
-      font-size: 20px;
+    p.description {
+      font-size: 1.2em;
+      margin: 10px 0 30px;
     }
 
-    a.button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 30px;
+    .button {
+      padding: 12px 25px;
       background-color: #ffffff;
       color: #2980b9;
       text-decoration: none;
-      border-radius: 8px;
       font-weight: bold;
+      border-radius: 8px;
+      transition: background 0.3s;
     }
 
-    a.button:hover {
+    .button:hover {
       background-color: #eee;
     }
 
-    .about-section, .connect-section {
+    section {
       padding: 60px 20px;
+      text-align: center;
     }
 
-    .about-section {
-      background-color: #ffffff;
+    .about-section, .home-section, .projects-section {
+      background-color: white;
       color: #333;
     }
 
-    .about-section h2,
-    .connect-section h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    .about-section p {
-      font-size: 22px;
-      font-weight: 500;
-    }
-
     .connect-section {
-      background-color: #0077b5; /* LinkedIn Blue */
+      background-color: var(--primary-color);
       color: white;
     }
 
@@ -71,7 +81,7 @@
       margin-top: 20px;
       padding: 12px 25px;
       background-color: white;
-      color: #0077b5;
+      color: var(--primary-color);
       text-decoration: none;
       font-weight: bold;
       border-radius: 6px;
@@ -80,20 +90,80 @@
     .connect-section a:hover {
       background-color: #e1e9ee;
     }
+
+    .support-section {
+      background-color: #222;
+      color: white;
+    }
+
+    footer {
+      background-color: #000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .dark-mode {
+      background-color: var(--background-dark);
+      color: var(--text-light);
+    }
+
+    .dark-mode header {
+      background: #1e1e1e;
+    }
+
+    .dark-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: #333;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+      .button, .connect-section a {
+        padding: 10px 20px;
+      }
+    }
   </style>
 </head>
 <body>
-  <header>
-  <img src="qaid.jpeg" alt="Qaid.in Logo" width="150" height="auto" />
+  <button class="dark-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
 
-    <h1>Welcome to Qaid.in</h1>
-    <p>This is not at all free and YOU SHOULD GIVE ME SOMETHING LIKE MOBILE PHONE TO DAD AND HIS PHONETO ME SOMETHING AS A BRUTHER !</p>
-    <a href="#" class="button">Get Started</a>
+  <header>
+    <img src="qaid.jpeg" alt="Qaid.in Logo">
+    <h1>Quest for Alternative Interventions in Development (QAID)</h1>
+    <p class="description">Empowering Communities Through Education, Employment, Health, and Financial Inclusion</p>
+    <a href="#home" class="button">Enter Site</a>
   </header>
 
-  <section class="about-section">
-    <h2>About</h2>
-    <p>MD Muhammad Dhanish — The Young Entrepreneur</p>
+  <section class="home-section" id="home">
+    <h2>Welcome to QAID</h2>
+    <p>QAID is an organization committed to driving sustainable development initiatives, specifically amongst economically marginalized Muslim communities. Our core focus areas are education, employment, health, skill development, and financial inclusion.</p>
+  </section>
+
+  <section class="projects-section" id="projects">
+    <h2>Our Projects</h2>
+    <p>We work hands-on with local communities to implement impactful projects that uplift and empower.</p>
+    <ul style="list-style: none; padding-left: 0;">
+      <li><strong>Education Outreach:</strong> Bridging learning gaps through community-led schooling.</li>
+      <li><strong>Skill Development:</strong> Vocational training for youth and women.</li>
+      <li><strong>Health Camps:</strong> Promoting preventive healthcare access.</li>
+      <li><strong>Microfinance Assistance:</strong> Supporting entrepreneurship with financial literacy.</li>
+    </ul>
+  </section>
+
+  <section class="about-section" id="about">
+    <h2>About Us</h2>
+    <p>Founded by MD Muhammad Dhanish, QAID is a grassroots movement built on the belief that inclusive development is the cornerstone of a better future. Our mission is to catalyze social equity through targeted interventions tailored to the real needs of the community.</p>
   </section>
 
   <section class="connect-section">
@@ -101,5 +171,20 @@
     <p>Let's connect on LinkedIn!</p>
     <a href="https://www.linkedin.com/in/muhammad-dhanish1/" target="_blank">Visit LinkedIn Profile</a>
   </section>
+
+  <section class="support-section">
+    <h2>Support</h2>
+    <p>Need help or have a question? Reach out to <strong>support@qaid.in</strong></p>
+  </section>
+
+  <footer>
+    &copy; 2025 QAID.in — Quest for Alternative Interventions in Development. All Rights Reserved.
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
 </body>
 </html>

@@ -24,6 +24,23 @@
       transition: background 0.3s, color 0.3s;
     }
 
+    nav {
+      background-color: var(--primary-color);
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
     header {
       background: linear-gradient(to right, #2980b9, #6dd5fa);
       padding: 80px 20px 40px;
@@ -32,19 +49,32 @@
     }
 
     header img {
-      width: 100px;
+      width: 120px;
       border-radius: 50%;
       margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
     h1 {
       font-size: 2.8em;
       margin: 0;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     p.description {
       font-size: 1.2em;
       margin: 10px 0 30px;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     .button {
@@ -138,6 +168,14 @@
 <body>
   <button class="dark-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
 
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#about">About Us</a>
+    <a href="#connect">Connect</a>
+    <a href="#support">Support</a>
+  </nav>
+
   <header>
     <img src="qaid.jpeg" alt="Qaid.in Logo">
     <h1>Quest for Alternative Interventions in Development (QAID)</h1>
@@ -166,13 +204,13 @@
     <p>Founded by MD Muhammad Dhanish, QAID is a grassroots movement built on the belief that inclusive development is the cornerstone of a better future. Our mission is to catalyze social equity through targeted interventions tailored to the real needs of the community.</p>
   </section>
 
-  <section class="connect-section">
+  <section class="connect-section" id="connect">
     <h2>Connect</h2>
     <p>Let's connect on LinkedIn!</p>
     <a href="https://www.linkedin.com/in/muhammad-dhanish1/" target="_blank">Visit LinkedIn Profile</a>
   </section>
 
-  <section class="support-section">
+  <section class="support-section" id="support">
     <h2>Support</h2>
     <p>Need help or have a question? Reach out to <strong>support@qaid.in</strong></p>
   </section>

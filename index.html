@@ -8,11 +8,12 @@
   <style>
     :root {
       --primary-color: #1e3a8a;
-      --secondary-color: #f1f5f9;
-      --accent-color: #22d3ee;
+      --secondary-color: #f8fafc;
+      --accent-color: #38bdf8;
       --text-color: #0f172a;
       --light-text: #ffffff;
       --dark-bg: #0f172a;
+      --bg-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
     }
 
     * {
@@ -23,37 +24,16 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: url('background.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background: var(--secondary-color);
       color: var(--text-color);
-      transition: background 0.4s, color 0.4s;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      transition: background 0.5s, color 0.5s;
     }
 
     body.dark-mode {
       background: var(--dark-bg);
       color: var(--light-text);
-    }
-
-    .dark-toggle {
-      position: fixed;
-      top: 20px;
-      right: 30px;
-      z-index: 1000;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      padding: 10px;
-      cursor: pointer;
-      transition: transform 0.4s, background 0.4s;
-    }
-
-    body.dark-mode .dark-toggle {
-      background: #1e293b;
-    }
-
-    .dark-toggle img {
-      width: 24px;
-      height: 24px;
     }
 
     nav {
@@ -66,88 +46,165 @@
       position: sticky;
       top: 0;
       z-index: 999;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav h1 {
+      font-size: 1.5rem;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
     }
 
     header {
       text-align: center;
-      padding: 60px 20px;
-      background: rgba(30, 58, 138, 0.8);
+      padding: 80px 20px 40px;
+      background-image: var(--bg-image);
+      background-size: cover;
+      background-position: center;
       color: white;
+      animation: fadeIn 1s ease-in;
+    }
+
+    header img {
+      width: 120px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      animation: slideInDown 0.8s ease;
+    }
+
+    header p.description {
+      font-size: 1.2rem;
+      animation: fadeIn 1.2s ease;
     }
 
     section {
       padding: 60px 20px;
       max-width: 900px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 10px;
-      margin-bottom: 30px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      transition: transform 0.3s;
     }
 
-    body.dark-mode section {
-      background: rgba(15, 23, 42, 0.85);
+    section:hover {
+      transform: scale(1.01);
     }
 
-    #auth, #checkout {
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
       text-align: center;
     }
 
-    .auth-buttons button, #payment-form button {
+    .projects-section ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      text-align: left;
+    }
+
+    .projects-section li {
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .projects-section li a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .projects-section li a:hover {
+      text-decoration: underline;
+      color: var(--accent-color);
+    }
+
+    .connect-section, .support-section {
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      text-align: center;
+    }
+
+    .connect-section a, .dark-toggle {
+      background: var(--light-text);
+      color: var(--primary-color);
       padding: 10px 20px;
-      margin: 10px;
-      background: var(--primary-color);
-      color: white;
-      border: none;
-      border-radius: 5px;
+      border-radius: 50px;
       font-weight: bold;
-      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+      transition: all 0.3s;
     }
 
-    .auth-buttons button:hover, #payment-form button:hover {
+    .connect-section a:hover, .dark-toggle:hover {
       background: var(--accent-color);
-      color: black;
-    }
-
-    #email-signup input, #payment-form input {
-      display: block;
-      margin: 10px auto;
-      padding: 10px;
-      width: 80%;
-      max-width: 300px;
-    }
-
-    .flex-fields {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    #cookie-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: var(--primary-color);
       color: white;
+    }
+
+    footer {
+      background-color: var(--dark-bg);
+      color: var(--light-text);
+      padding: 20px;
       text-align: center;
-      padding: 1rem;
-      z-index: 999;
     }
 
-    #cookie-banner button {
-      margin: 0 10px;
-      padding: 0.5rem 1rem;
-      background: var(--accent-color);
-      border: none;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
+    .dark-toggle {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  z-index: 1000;
+  cursor: pointer;
+  padding: 10px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+body.dark-mode .dark-toggle {
+  background-color: #1e293b;
+}
+.dark-toggle img {
+  width: 24px;
+  height: 24px;
+}
+
+
+    @keyframes slideInDown {
+      0% { transform: translateY(-100px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
   <button class="dark-toggle" onclick="toggleDarkMode()">
-    <img id="mode-icon" src="sun-icon.png" alt="Toggle Theme">
+    <img id="mode-icon" src="https://img.icons8.com/ios-filled/50/000000/sun--v1.png" alt="Mode Toggle">
   </button>
 
   <nav>
@@ -156,63 +213,62 @@
       <a href="#home">Home</a>
       <a href="#projects">Projects</a>
       <a href="#about">About</a>
-      <a href="#auth">Login/Signup</a>
-      <a href="#checkout">Donate</a>
+      <a href="#connect">Connect</a>
+      <a href="#support">Support</a>
     </div>
   </nav>
 
   <header>
-    <img src="qaid.jpeg" alt="QAID Logo" width="100">
-    <h1>Quest for Alternative Interventions in Development</h1>
-    <p>Empowering communities through inclusion and development.</p>
+    <img src="qaid.jpeg" alt="Qaid.in Logo">
+    <h1>Quest for Alternative Interventions in Development (QAID)</h1>
+    <p class="description">Empowering Communities Through Education, Employment, Health, and Financial Inclusion</p>
   </header>
 
-  <section id="auth">
-    <h2>Login / Sign Up</h2>
-    <div class="auth-buttons">
-      <button>Continue with Google</button>
-      <button>Continue with Apple</button>
-    </div>
-    <p>OR</p>
-    <form id="email-signup">
-      <input type="email" placeholder="Email" required>
-      <input type="password" placeholder="Password" required>
-      <button type="submit">Submit</button>
-    </form>
+  <section class="home-section" id="home">
+    <h2>Welcome to QAID</h2>
+    <p>QAID is an organization committed to driving sustainable development initiatives, specifically amongst economically marginalized Muslim communities. Our core focus areas are education, employment, health, skill development, and financial inclusion.</p>
   </section>
 
-  <section id="checkout">
-    <h2>Credit Card Payment</h2>
-    <form id="payment-form">
-      <input type="text" placeholder="Name on Card" required>
-      <input type="text" placeholder="Card Number" required>
-      <div class="flex-fields">
-        <input type="text" placeholder="MM/YY" required>
-        <input type="text" placeholder="CVC" required>
-      </div>
-      <button type="submit">Pay Now</button>
-    </form>
+  <section class="projects-section" id="projects">
+    <h2>Our Projects</h2>
+    <ul>
+      <li><a href="https://example.com/education" target="_blank"><strong>Education Outreach:</strong> Bridging learning gaps through community-led schooling.</a></li>
+      <li><a href="https://example.com/skills" target="_blank"><strong>Skill Development:</strong> Vocational training for youth and women.</a></li>
+      <li><a href="https://example.com/health" target="_blank"><strong>Health Camps:</strong> Promoting preventive healthcare access.</a></li>
+      <li><a href="https://example.com/microfinance" target="_blank"><strong>Microfinance Assistance:</strong> Supporting entrepreneurship with financial literacy.</a></li>
+    </ul>
   </section>
 
-  <div id="cookie-banner">
-    This website uses cookies to enhance your experience.
-    <button onclick="acceptCookies()">Accept</button>
-    <button onclick="declineCookies()">Decline</button>
-  </div>
+  <section class="about-section" id="about">
+    <h2>About Us</h2>
+    <p>Founded by MD Muhammad Dhanish, QAID is a grassroots movement built on the belief that inclusive development is the cornerstone of a better future. Our mission is to catalyze social equity through targeted interventions tailored to the real needs of the community.</p>
+  </section>
+
+  <section class="connect-section" id="connect">
+    <h2>Connect</h2>
+    <p>Let's connect on LinkedIn!</p>
+    <a href="https://www.linkedin.com/in/muhammad-dhanish1/" target="_blank">Visit LinkedIn Profile</a>
+  </section>
+
+  <section class="support-section" id="support">
+    <h2>Support</h2>
+    <p>Need help or have a question? Reach out to <strong>support@qaid.in</strong></p>
+  </section>
+
+  <footer>
+    &copy; 2025 QAID.in — Quest for Alternative Interventions in Development. All Rights Reserved.
+  </footer>
 
   <script>
-    function DarkMode() {
-      document.body.classList.toggle('dark-mode');
-      const icon = document.getElementById('mode-icon');
-      icon.src = document.body.classList.contains('dark-mode') ? 'moon-icon.png' : 'sun-icon.png';
-    }
-
-    function acceptCookies() {
-      document.getElementById('cookie-banner').style.display = 'none';
-    }
-
-    function declineCookies() {
-      document.getElementById('cookie-banner').style.display = 'none';
+    function toggleDarkMode() {
+      const body = document.body;
+      const icon = document.getElementById("mode-icon");
+      body.classList.toggle("dark-mode");
+      if (body.classList.contains("dark-mode")) {
+        icon.src = "https://img.icons8.com/ios-glyphs/30/moon-symbol.png";
+      } else {
+        icon.src = "https://img.icons8.com/ios-filled/50/000000/sun--v1.png";
+      }
     }
   </script>
 </body>

@@ -165,17 +165,25 @@
     }
 
     .dark-toggle {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 1000;
-      cursor: pointer;
-    }
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  z-index: 1000;
+  cursor: pointer;
+  padding: 10px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+body.dark-mode .dark-toggle {
+  background-color: #1e293b;
+}
+.dark-toggle img {
+  width: 24px;
+  height: 24px;
+}
 
-    .dark-toggle img {
-      width: 30px;
-      height: 30px;
-    }
 
     @keyframes slideInDown {
       0% { transform: translateY(-100px); opacity: 0; }

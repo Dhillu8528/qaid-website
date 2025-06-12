@@ -13,6 +13,7 @@
       --text-color: #0f172a;
       --light-text: #ffffff;
       --dark-bg: #0f172a;
+      --bg-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
     }
 
     * {
@@ -23,15 +24,15 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      background: var(--secondary-color);
       color: var(--text-color);
       line-height: 1.6;
       scroll-behavior: smooth;
-      transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+      transition: background 0.5s, color 0.5s;
     }
 
     body.dark-mode {
-      background: linear-gradient(to right, #0f172a, #1e293b);
+      background: var(--dark-bg);
       color: var(--light-text);
     }
 
@@ -46,7 +47,6 @@
       top: 0;
       z-index: 999;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: background 0.3s;
     }
 
     nav h1 {
@@ -68,7 +68,9 @@
     header {
       text-align: center;
       padding: 80px 20px 40px;
-      background: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70') no-repeat center center/cover;
+      background-image: var(--bg-image);
+      background-size: cover;
+      background-position: center;
       color: white;
       animation: fadeIn 1s ease-in;
     }
@@ -95,15 +97,10 @@
       padding: 60px 20px;
       max-width: 900px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.8);
       border-radius: 12px;
       margin-bottom: 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s, background 0.3s;
-    }
-
-    body.dark-mode section {
-      background: rgba(30, 41, 59, 0.9);
+      transition: transform 0.3s;
     }
 
     section:hover {
@@ -119,10 +116,12 @@
     .projects-section ul {
       list-style-type: disc;
       padding-left: 20px;
+      text-align: left;
     }
 
     .projects-section li {
       margin-bottom: 10px;
+      cursor: pointer;
     }
 
     .projects-section li a {
@@ -148,9 +147,9 @@
       border-radius: 50px;
       font-weight: bold;
       text-decoration: none;
+      display: inline-block;
       margin-top: 10px;
       transition: all 0.3s;
-      display: inline-block;
     }
 
     .connect-section a:hover, .dark-toggle:hover {
@@ -166,44 +165,25 @@
     }
 
     .dark-toggle {
-      position: fixed;
-      top: 20px;
-      right: 30px;
-      z-index: 1000;
-      cursor: pointer;
-      padding: 10px;
-      background-color: white;
-      border-radius: 50%;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s;
-    }
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  z-index: 1000;
+  cursor: pointer;
+  padding: 10px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+body.dark-mode .dark-toggle {
+  background-color: #1e293b;
+}
+.dark-toggle img {
+  width: 24px;
+  height: 24px;
+}
 
-    .dark-toggle img {
-      width: 24px;
-      height: 24px;
-    }
-
-    .cookie-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #111;
-      color: #fff;
-      padding: 1rem;
-      text-align: center;
-      z-index: 1000;
-    }
-
-    .cookie-banner button {
-      background: var(--accent-color);
-      border: none;
-      color: white;
-      padding: 0.5rem 1rem;
-      margin-left: 10px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
 
     @keyframes slideInDown {
       0% { transform: translateY(-100px); opacity: 0; }
@@ -223,13 +203,8 @@
   </style>
 </head>
 <body>
-  <div class="cookie-banner" id="cookieBanner">
-    This website uses cookies to ensure you get the best experience.
-    <button onclick="acceptCookies()">Accept</button>
-  </div>
-
   <button class="dark-toggle" onclick="toggleDarkMode()">
-    <img id="mode-icon" src="https://img.icons8.com/ios-filled/50/000000/sun--v1.png" alt="Toggle Mode">
+    <img id="mode-icon" src="https://img.icons8.com/ios-filled/50/000000/sun--v1.png" alt="Mode Toggle">
   </button>
 
   <nav>
@@ -240,29 +215,60 @@
       <a href="#about">About</a>
       <a href="#connect">Connect</a>
       <a href="#support">Support</a>
-      <a href="signup.html">Login</a>
     </div>
   </nav>
 
-  <!-- The rest of your page content remains the same -->
+  <header>
+    <img src="qaid.jpeg" alt="Qaid.in Logo">
+    <h1>Quest for Alternative Interventions in Development (QAID)</h1>
+    <p class="description">Empowering Communities Through Education, Employment, Health, and Financial Inclusion</p>
+  </header>
+
+  <section class="home-section" id="home">
+    <h2>Welcome to QAID</h2>
+    <p>QAID is an organization committed to driving sustainable development initiatives, specifically amongst economically marginalized Muslim communities. Our core focus areas are education, employment, health, skill development, and financial inclusion.</p>
+  </section>
+
+  <section class="projects-section" id="projects">
+    <h2>Our Projects</h2>
+    <ul>
+      <li><a href="https://example.com/education" target="_blank"><strong>Education Outreach:</strong> Bridging learning gaps through community-led schooling.</a></li>
+      <li><a href="https://example.com/skills" target="_blank"><strong>Skill Development:</strong> Vocational training for youth and women.</a></li>
+      <li><a href="https://example.com/health" target="_blank"><strong>Health Camps:</strong> Promoting preventive healthcare access.</a></li>
+      <li><a href="https://example.com/microfinance" target="_blank"><strong>Microfinance Assistance:</strong> Supporting entrepreneurship with financial literacy.</a></li>
+    </ul>
+  </section>
+
+  <section class="about-section" id="about">
+    <h2>About Us</h2>
+    <p>Founded by MD Muhammad Dhanish, QAID is a grassroots movement built on the belief that inclusive development is the cornerstone of a better future. Our mission is to catalyze social equity through targeted interventions tailored to the real needs of the community.</p>
+  </section>
+
+  <section class="connect-section" id="connect">
+    <h2>Connect</h2>
+    <p>Let's connect on LinkedIn!</p>
+    <a href="https://www.linkedin.com/in/muhammad-dhanish1/" target="_blank">Visit LinkedIn Profile</a>
+  </section>
+
+  <section class="support-section" id="support">
+    <h2>Support</h2>
+    <p>Need help or have a question? Reach out to <strong>support@qaid.in</strong></p>
+  </section>
+
+  <footer>
+    &copy; 2025 QAID.in — Quest for Alternative Interventions in Development. All Rights Reserved.
+  </footer>
 
   <script>
     function toggleDarkMode() {
       const body = document.body;
       const icon = document.getElementById("mode-icon");
       body.classList.toggle("dark-mode");
-      icon.src = body.classList.contains("dark-mode")
-        ? "https://img.icons8.com/ios-glyphs/30/moon-symbol.png"
-        : "https://img.icons8.com/ios-filled/50/000000/sun--v1.png";
-    }
-
-    function acceptCookies() {
-      document.getElementById('cookieBanner').style.display = 'none';
-      localStorage.setItem('cookiesAccepted', 'true');
-    }
-
-    if (localStorage.getItem('cookiesAccepted')) {
-      document.getElementById('cookieBanner').style.display = 'none';
+      if (body.classList.contains("dark-mode")) {
+        icon.src = "https://img.icons8.com/ios-glyphs/30/moon-symbol.png";
+      } else {
+        icon.src = "https://img.icons8.com/ios-filled/50/000000/sun--v1.png";
+      }
     }
   </script>
 </body>
